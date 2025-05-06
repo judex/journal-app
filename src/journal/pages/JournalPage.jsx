@@ -1,3 +1,11 @@
+
+import { JournalLayout } from "../layout/JournalLayout";
+import { NothingSelectedView } from "../views";
+
 export const JournalPage = () => {
-  return <div>JournalPage</div>;
+  return (
+    <JournalLayout>
+      <NothingSelectedView />
+    </JournalLayout>
+  );
 };
