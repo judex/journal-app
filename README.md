@@ -13,4 +13,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 Instalacion desde https://mui.com/material-ui/getting-started/installation/
 
+## Instalaciones extras
+
 yarn add @mui/material @emotion/react @emotion/styled
+yarn add @reduxjs/toolkit react-redux
