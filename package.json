@@ -16,6 +16,7 @@
     "@mui/material": "^7.0.2",
     "@pokaundead/react-generator": "^1.0.4",
     "@reduxjs/toolkit": "^2.8.0",
+    "animate.css": "^4.1.1",
     "firebase": "^11.7.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

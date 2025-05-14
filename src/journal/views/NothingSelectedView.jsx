@@ -1,9 +1,11 @@
-import { StarOutline } from "@mui/icons-material"
-import { Grid, Typography } from "@mui/material"
+import { StarOutline } from "@mui/icons-material";
+import { Grid, Typography } from "@mui/material";
+import 'animate.css';
 
 export const NothingSelectedView = () => {
   return (
-    <Grid 
+    <Grid
+        className="animate__animated animate__fadeIn animate__faster" 
         container
         spacing={0}
         direction="column"

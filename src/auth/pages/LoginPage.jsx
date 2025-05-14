@@ -1,30 +1,33 @@
 import { Google } from "@mui/icons-material";
-import { Button, Grid, Link, TextField } from "@mui/material";
+import { Alert, Button, Grid, Link, TextField } from "@mui/material";
+import 'animate.css';
 import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { checkingCredentials, startGoogleSignIn } from "../../store/auth";
+import { startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth";
 import { AuthLayout } from "../layout/AuthLayout";
 
-
 const formLogin = {
-  email: 'msn.dproyect@gmail.com',
-  password: '123456'
+  email: '',
+  password: ''
 } 
 
 export const LoginPage = () => {
-
-  const { status } = useSelector(state => state.auth);
+  
   const dispatch = useDispatch();
 
   const { email, password, onInputChange }= useForm(formLogin);
 
+  const { status, errorMessage } = useSelector(state => state.auth);
+  
   const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
+
+  
   const onSubmit = (event) => {
     event.preventDefault();
-    dispatch(checkingCredentials()); 
+    dispatch(startLoginWithEmailPassword({email, password})); 
   }
 
   const onGoogleSignIn = () => {
@@ -34,7 +37,9 @@ export const LoginPage = () => {
 
   return (
     <AuthLayout title="Login">
-      <form className="formAuth" onSubmit={onSubmit}>
+      <form        
+      className="formAuth animate__animated animate__fadeIn animate__faster" 
+      onSubmit={onSubmit}>
         <Grid size={12}>
           <TextField
             label="Email"
@@ -56,6 +61,9 @@ export const LoginPage = () => {
             value={password}
           ></TextField>
         </Grid>
+        <Grid size={12} display={errorMessage ? '' : 'none'}>
+          <Alert severity="error">{errorMessage}</Alert>
+        </Grid>        
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, sm: 6 }}>
             <Button 
